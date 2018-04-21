@@ -2,15 +2,15 @@
 
     <label>Shopping List</label>
 
-    <div class="col-md-12">
+    <div class="col-md-10">
         <app-shopping-list-item></app-shopping-list-item>
     </div>
 
-    <div class="col-md-12">
-        <ul>
-            <li><app-ingredient></app-ingredient></li>
-            <li><app-ingredient></app-ingredient></li>
-        </ul>
+    <hr>
 
-    </div>
+    <ul class="list-group">
+        <a class="list-group-item" style="cursor: pointer" *ngFor="let ingredient of ingredients">
+            {{ingredient.name}} {{ingredient.amount}}
+        </a>
+    </ul>
 </div>
