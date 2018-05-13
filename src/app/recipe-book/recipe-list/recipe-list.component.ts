@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../recipes.model';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,14 +7,19 @@ import { Recipe } from '../recipes.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
+    @Output() recipeWasSelect = new EventEmitter<Recipe>();
+    recipes: Recipe[] = [
+        new Recipe('teste name recipe','this is a teste','http://www.readersdigest.ca/wp-content/uploads/2013/02/worst-foods-for-aging-fast-food.jpg'),
+        new Recipe('another teste recipe','this is a new teste','http://www.readersdigest.ca/wp-content/uploads/2013/02/worst-foods-for-aging-fast-food.jpg')
+    ];
 
-  recipes: Recipe[] = [
-      new Recipe('teste name recipe','this is a teste','http://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/18180350/051SIP112-grilled-mustard-rosemary-chicken-recipe-alt-main.jpg')
-  ];
+    constructor() { }
 
-  constructor() { }
+    ngOnInit() {
+    }
 
-  ngOnInit() {
-  }
-
+    //repassa para o livro qual receita foi clicada
+    onRecipeSelected(recipe: Recipe){
+        this.recipeWasSelect.emit(recipe);
+    }
 }
