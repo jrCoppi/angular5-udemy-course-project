@@ -10,8 +10,7 @@
     <div class="col-md-12">
         <!-- Varre as receitas, passa como elemento a receita, ouve o evento que diz se foi clicada nela, e passa para o livro de receitas -->
         <app-recipe-item  
-            *ngFor="let recipeEl of recipes" [recipe]="recipeEl" 
-            (recipeSelected)="onRecipeSelected(recipeEl)"
+            *ngFor="let recipeEl of recipes" [recipe]="recipeEl"
         >
             
         </app-recipe-item>

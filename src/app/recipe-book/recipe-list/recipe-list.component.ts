@@ -1,25 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
+
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css']
+  //styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-    @Output() recipeWasSelect = new EventEmitter<Recipe>();
-    recipes: Recipe[] = [
-        new Recipe('teste name recipe','this is a teste','http://www.readersdigest.ca/wp-content/uploads/2013/02/worst-foods-for-aging-fast-food.jpg'),
-        new Recipe('another teste recipe','this is a new teste','http://www.readersdigest.ca/wp-content/uploads/2013/02/worst-foods-for-aging-fast-food.jpg')
-    ];
+    recipes: Recipe[];
 
-    constructor() { }
+    constructor(private recipeService: RecipeService) { }
 
     ngOnInit() {
-    }
-
-    //repassa para o livro qual receita foi clicada
-    onRecipeSelected(recipe: Recipe){
-        this.recipeWasSelect.emit(recipe);
+        this.recipes = this.recipeService.getRecipes();
     }
 }
