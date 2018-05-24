@@ -1,15 +1,16 @@
 <div class="container">
     <div class="row">
-        <app-header (featuredSelect)="onNavigate($event)"></app-header>
+        <app-header></app-header>
     </div>
 
     <div class="row">
-        <div class="col-md-12" >
+        <!--div class="col-md-12" >
             <app-recipe-book *ngIf="loadedFeature === 'recipe'"></app-recipe-book>
         </div>
-        
+
         <div class="col-md-12" >
             <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
-        </div>
+        </div-->
+        <router-outlet></router-outlet>
     </div>
 </div>

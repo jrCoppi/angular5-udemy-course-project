@@ -23,4 +23,12 @@ export class ShoppingListService {
         this.ingredientChanged.emit(this.getIngredients());
     }
 
+    addIngredients(ingredient: Ingredient[]) {
+       //converte array para lista, pois o metodo so suporta lista
+       //... = operador para fazer
+        this.ingredients.push(...ingredient);
+        this.ingredientChanged.emit(this.getIngredients());
+    }
+
+
 }

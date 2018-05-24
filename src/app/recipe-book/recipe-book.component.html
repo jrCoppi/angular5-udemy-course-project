@@ -6,15 +6,6 @@
     </div>
 
     <div class="col-md-7">
-        <!-- passa para os detalhe se não for nulo a receita seleciona-->
-        <app-recipe-detail
-        *ngIf="selectedRecipe; else infoText"
-        [recipeDetail]="selectedRecipe"
-        >
-            
-        </app-recipe-detail>
-        <ng-template #infoText>
-            <p>Select a recipe!</p>
-        </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>
