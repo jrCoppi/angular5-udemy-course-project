@@ -1,10 +1,10 @@
 import { Ingredient } from '../shared/ingredient.model';
 
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 export class ShoppingListService {
     //cria um event emmiter pra avisar quando o ingredient mudar
-    ingredientChanged = new EventEmitter<Ingredient[]>();
+    ingredientChanged = new Subject<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apple',5),
@@ -20,14 +20,14 @@ export class ShoppingListService {
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         //ao alterar informa o novo array
-        this.ingredientChanged.emit(this.getIngredients());
+        this.ingredientChanged.next(this.getIngredients());
     }
 
     addIngredients(ingredient: Ingredient[]) {
        //converte array para lista, pois o metodo so suporta lista
        //... = operador para fazer
         this.ingredients.push(...ingredient);
-        this.ingredientChanged.emit(this.getIngredients());
+        this.ingredientChanged.next(this.getIngredients());
     }
 
 
