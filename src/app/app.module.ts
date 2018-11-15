@@ -16,6 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 
+
+import { RecipeService } from './recipe-book/recipe.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService,RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

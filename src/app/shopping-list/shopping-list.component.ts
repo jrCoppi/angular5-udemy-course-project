@@ -20,9 +20,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.ingredients = this.shoppingListService.getIngredients();
-      this.subscription = this.shoppingListService.ingredientChanged;
-      //push notification - recebe a notificação quando array for mudado e ataliza
-      this.shoppingListService.ingredientChanged.
+      this.subscription = this.shoppingListService.ingredientChanged.
           subscribe((ingredients: Ingredient[]) => {
               this.ingredients = ingredients;
           });
@@ -30,5 +28,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
      this.subscription.unsubscribe();
+  }
+
+  onEditItem(index: number){
+      this.shoppingListService.startEditing.next(index);
   }
 }
